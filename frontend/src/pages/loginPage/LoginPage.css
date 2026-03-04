@@ -15,8 +15,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(12px, 3vw, 32px)
-  ;
+  padding: clamp(12px, 3vw, 32px);
 }
 
 @media (min-width: 1024px) {
@@ -372,3 +371,5 @@ body {
     display: none;
   }
 }
+
+
