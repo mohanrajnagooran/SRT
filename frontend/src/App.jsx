@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from './components/Navbar';
 import NetworkStatus from './components/NetworkStatus';
 
+
 const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
