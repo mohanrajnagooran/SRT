@@ -71,9 +71,9 @@ export default function HomePage() {
       <div className="mb-4">
         <h5>Quick Actions</h5>
         <div className="d-flex flex-wrap gap-2">
-          <Link to="/add-lr" className="btn btn-primary">+ Add LR</Link>
-          <Link to="/add-customer" className="btn btn-success">+ Add Customer</Link>
-          <Link to="/add-route" className="btn btn-warning">+ Add Route</Link>
+          <Link to="/lrs/add" className="btn btn-primary">+ Add LR</Link>
+          <Link to="/customers/add" className="btn btn-success">+ Add Customer</Link>
+          <Link to="/routeprefix/create" className="btn btn-warning">+ Add Route</Link>
           <Link to="/reports" className="btn btn-dark">📊 View Reports</Link>
         </div>
       </div>
