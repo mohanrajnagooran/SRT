@@ -68,3 +68,56 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.sidebar{
+  width:260px;
+  height:100vh;
+  position:fixed;
+  left:0;
+  top:0;
+}
+
+.main-content{
+  margin-left:260px;
+  padding:20px;
+}
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  left: -260px;
+  top: 0;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.main {
+  width: 100%;
+  margin-left: 0;
+}
+
+.header {
+  height: 60px;
+}
+
+.content {
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    left: 0;
+  }
+
+  .main {
+    margin-left: 260px;
+  }
+}

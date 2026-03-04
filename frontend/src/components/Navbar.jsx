@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../pages/loginPage/authSlice';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 
 function Navbar() {
@@ -14,11 +15,16 @@ function Navbar() {
     navigate('/login');
   };
 
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top"> {/* Dark background, shadow, fixed to top */}
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold fs-4" to="/"> {/* Bold text, larger font size */}
-          SRT App
+          <img
+            src={logo}
+            alt="SRT Parcel Delivery Logo"
+            width={120}
+          />
         </Link>
 
         <button
