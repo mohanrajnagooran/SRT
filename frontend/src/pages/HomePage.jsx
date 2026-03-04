@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Bar, Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function HomePage() {
  const [stats, setStats] = useState({
@@ -71,30 +71,12 @@ export default function HomePage() {
       <div className="mb-4">
         <h5>Quick Actions</h5>
         <div className="d-flex flex-wrap gap-2">
-          <Link to="/add-lr" className="btn btn-primary">+ Add LR</Link>
-          <Link to="/add-customer" className="btn btn-success">+ Add Customer</Link>
-          <Link to="/add-route" className="btn btn-warning">+ Add Route</Link>
+          <Link to="/lrs/add" className="btn btn-primary">+ Add LR</Link>
+          <Link to="/customers/add" className="btn btn-success">+ Add Customer</Link>
+          <Link to="/routeprefix/create" className="btn btn-warning">+ Add Route</Link>
           <Link to="/reports" className="btn btn-dark">📊 View Reports</Link>
         </div>
-      </div>
-
-      {/* Charts */}
-      <div className="row mb-4">
-        <div className="col-md-6">
-          <div className="card p-3 shadow-sm">
-            <h5>LRs per Month</h5>
-            <Bar data={lrPerMonthData} />
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="card p-3 shadow-sm">
-            <h5>Top Routes</h5>
-            <Doughnut data={topRoutesData} />
-          </div>
-        </div>
-      </div>
-
-      {/* Recent Activity */}
+        {/* Recent Activity */}
       <div className="card p-3 shadow-sm">
         <h5>Recent LRs</h5>
         <table className="table table-bordered mt-2">
@@ -120,6 +102,25 @@ export default function HomePage() {
           </tbody>
         </table>
       </div>
+      </div>
+
+      {/* Charts */}
+      <div className="row mb-4">
+        <div className="col-md-6">
+          <div className="card p-3 shadow-sm">
+            <h5>LRs per Month</h5>
+            <Bar data={lrPerMonthData} />
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card p-3 shadow-sm">
+            <h5>Top Routes</h5>
+            <Doughnut data={topRoutesData} />
+          </div>
+        </div>
+      </div>
+
+      
     </div>
   );
 }
