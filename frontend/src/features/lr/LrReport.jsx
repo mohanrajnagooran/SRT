@@ -84,7 +84,7 @@ function LrReport() {
   };
 
   return (
-    <div className="card shadow-lg rounded-3 p-4 mx-auto my-4 border border-1" style={{ maxWidth: "1100px" }}>
+    <div className="card shadow-lg rounded-3 p-4 mx-auto my-4 border " style={{ maxWidth: "1100px" }}>
       <div className="d-flex justify-content-between mb-3">
         <h5>LR Report</h5>
       </div>
