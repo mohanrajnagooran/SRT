@@ -1,7 +1,11 @@
 import express from 'express';
-import {getAllLr, getLrById, createLr, updateLr, deleteLr} from '../controllers/lrController.js';
+import {getAllLr, getLrById, createLr, updateLr, deleteLr,getLRReport} from '../controllers/lrController.js';
 
 const router = express.Router();
+
+
+router.get('/report', getLRReport);
+
 
 router.post('/', createLr);
 router.get('/', getAllLr);

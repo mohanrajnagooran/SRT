@@ -1,4 +1,38 @@
-import db from "../config/db.js"; // Your MySQL pool config
+import pool from "../config/db.js"; // Your MySQL pool config
+
+
+
+// report
+export const getLRReport = async (req, res) => {
+  try {
+    const { date } = req.query;
+
+    const [rows] = await pool.query(
+      `SELECT 
+        ID,
+        prefix,
+        consigner,
+        consignee,
+        consignee_place,
+        bale_no,
+        articles_count AS qty,
+        paid,
+        to_pay,
+        r_paid,
+        date
+      FROM lr
+      WHERE DATE(date) = ?
+      AND is_deleted = 0`,
+      [date]
+    );
+
+    res.json(rows);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Database error" });
+  }
+};
 
 // ✅ Create a LR entry
 export const createLr = async (req, res) => {
