@@ -19,7 +19,7 @@ function LrReport() {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:5000/api/lrs/report?date=${reportDate}`
+        `https://srt-fxc9.onrender.com/api/lrs/report?date=${reportDate}`
       );
 
       const data = await res.json();
