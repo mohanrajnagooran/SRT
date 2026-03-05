@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getLrReport } from "../api/lrApi";
 
 function LrReport() {
   const [reportDate, setReportDate] = useState("");
@@ -16,11 +17,8 @@ function LrReport() {
     try {
       setLoading(true);
 
-      const res = await fetch(
-        `http://localhost:5000/api/lrs/report?date=${reportDate}`
-      );
-
-      const data = await res.json();
+      const res = await getLrReport(reportDate);
+      setRows(res.data);
 
       setRows(data);
     } catch (error) {
