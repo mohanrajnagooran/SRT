@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../api/config";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 function LrReport() {
   const [reportDate, setReportDate] = useState("");
@@ -31,6 +33,55 @@ function LrReport() {
       setLoading(false);
     }
   };
+  const downloadPDF = () => {
+    if (rows.length === 0) {
+      alert("No data to download");
+      return;
+    }
+
+    const doc = new jsPDF("landscape");
+
+    doc.setFontSize(16);
+    doc.text(`LR Report - ${reportDate}`, 14, 15);
+
+    const tableColumn = [
+      "SNo",
+      "ID",
+      "Prefix",
+      "Consigner",
+      "Consignee",
+      "Place",
+      "Bale",
+      "Qty",
+      "To Pay",
+      "Paid",
+      "R Paid",
+      "Date",
+    ];
+
+    const tableRows = rows.map((row, index) => [
+      index + 1,
+      row.ID,
+      row.prefix,
+      row.consigner,
+      row.consignee,
+      row.consignee_place,
+      row.bale_no,
+      row.qty,
+      row.to_pay,
+      row.paid,
+      row.r_paid,
+      row.date?.split("T")[0],
+    ]);
+
+    autoTable(doc, {
+      startY: 25,
+      head: [tableColumn],
+      body: tableRows,
+    });
+
+    doc.save(`LR_Report_${reportDate}.pdf`);
+  };
 
   return (
     <div className="card shadow-lg rounded-3 p-4 mx-auto my-4 border border-1" style={{ maxWidth: "1100px" }}>
@@ -51,6 +102,9 @@ function LrReport() {
           className="btn btn-primary"
         >
           {loading ? "Loading..." : "Fetch Report"}
+        </button>
+        <button onClick={downloadPDF} className="btn btn-success">
+          Download PDF
         </button>
       </div>
 
